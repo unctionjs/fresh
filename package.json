@@ -1,7 +1,7 @@
 {
-  "name": "@unction/template",
+  "name": "@unction/fresh",
   "version": "1.0.0",
-  "description": "",
+  "description": "Takes a iterable and returns an empty fresh version of that iterable",
   "keywords": [
     "unction",
     "functional"
@@ -45,6 +45,7 @@
     "tap": "10.3.3"
   },
   "dependencies": {
-    "ramda": "0.24.1"
+    "@unction/type": "*",
+    "xstream": "10.9.0"
   }
 }
