@@ -1,7 +1,7 @@
 /* eslint-disable flowtype/require-parameter-type, flowtype/require-return-type */
 import {test} from "tap"
 
-import fresh from "./source.js"
+import forEach from "./source"
 
 test(({same, end}) => {
   same(
