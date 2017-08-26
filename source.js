@@ -1,8 +1,8 @@
 import type from "@unction/type"
 import xstream from "xstream"
 
-export default function fresh (iterable: IterableType): IterableType | null {
-  switch (type(iterable)) {
+export default function fresh (value: mixed): mixed {
+  switch (type(value)) {
     case "String": {
       return ""
     }
@@ -25,10 +25,10 @@ export default function fresh (iterable: IterableType): IterableType | null {
       return new WeakSet()
     }
     case "Stream": {
-      return xstream.none()
+      return xstream.never()
     }
     default: {
-      return null
+      throw new Error(`fresh doesn't know how to handle ${type(value)}`)
     }
   }
 }

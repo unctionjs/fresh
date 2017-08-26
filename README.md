@@ -4,9 +4,9 @@
 ![Stability][BADGE_STABILITY]
 ![Dependencies][BADGE_DEPENDENCY]
 
-> IterableType -> IterableType
+> mixed -> mixed
 
-Takes a iterable and returns an empty fresh version of that iterable.
+Takes a value and returns an empty fresh version of that value.
 
 ``` javascript
 fresh({aaa: "aaa"}) // {}
