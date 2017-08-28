@@ -15,14 +15,8 @@ export default function fresh (value: mixed): mixed {
     case "Map": {
       return new Map()
     }
-    case "WeakMap": {
-      return new WeakMap()
-    }
     case "Set": {
       return new Set()
-    }
-    case "WeakSet": {
-      return new WeakSet()
     }
     case "Stream": {
       return xstream.never()

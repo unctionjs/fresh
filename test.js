@@ -69,15 +69,6 @@ test(({same, end}) => {
 
 test(({same, end}) => {
   same(
-    fresh(new WeakSet([{aaa: "a"}, {bbb: "b"}, {ccc: "c"}])),
-    new WeakSet()
-  )
-
-  end()
-})
-
-test(({same, end}) => {
-  same(
     fresh(xstream.of("a")),
     xstream.never()
   )
@@ -89,15 +80,6 @@ test(({same, end}) => {
   same(
     fresh(new Map([["a", "b"]])),
     new Map()
-  )
-
-  end()
-})
-
-test(({same, end}) => {
-  same(
-    fresh(new WeakMap([[{aaa: "a"}, "b"]])),
-    new WeakMap()
   )
 
   end()
