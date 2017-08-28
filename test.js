@@ -2,7 +2,7 @@
 import {test} from "tap"
 import xstream from "xstream"
 
-import fresh from "./source"
+import fresh from "./"
 
 test(({same, end}) => {
   same(
