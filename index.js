@@ -21,6 +21,9 @@ export default function fresh (value: mixed): mixed {
     case "Stream": {
       return xstream.never()
     }
+    case "MemoryStream": {
+      return xstream.never().remember()
+    }
     default: {
       throw new Error(`fresh doesn't know how to handle ${type(value)}`)
     }

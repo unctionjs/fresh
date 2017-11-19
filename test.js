@@ -85,6 +85,15 @@ test(({same, end}) => {
   end()
 })
 
+test(({same, end}) => {
+  same(
+    fresh(xstream.of("x").startWith("a")),
+    xstream.never().remember()
+  )
+
+  end()
+})
+
 test(({throws, end}) => {
   throws(
     () => fresh(0)
