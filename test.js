@@ -22,8 +22,8 @@ test(({same, end}) => {
   end()
 })
 
-test(({same, end}) => {
-  same(
+test(({equal, end}) => {
+  equal(
     fresh("a"),
     ""
   )
@@ -49,8 +49,8 @@ test(({same, end}) => {
   end()
 })
 
-test(({same, end}) => {
-  same(
+test(({equal, end}) => {
+  equal(
     fresh(""),
     ""
   )
