@@ -1,6 +1,7 @@
 /* eslint-disable flowtype/require-parameter-type, flowtype/require-return-type, no-magic-numbers */
 import {test} from "tap"
 import xstream from "xstream"
+import streamSatisfies from "@unction/streamsatisfies"
 
 import fresh from "./index"
 
@@ -69,15 +70,6 @@ test(({same, end}) => {
 
 test(({same, end}) => {
   same(
-    fresh(xstream.of("a")),
-    xstream.never()
-  )
-
-  end()
-})
-
-test(({same, end}) => {
-  same(
     fresh(new Map([["a", "b"]])),
     new Map()
   )
@@ -85,19 +77,45 @@ test(({same, end}) => {
   end()
 })
 
-test(({same, end}) => {
-  same(
-    fresh(xstream.of("x").startWith("a")),
-    xstream.never().remember()
-  )
+test("Stream", ({equal, end}) => {
+  streamSatisfies(
+    []
+  )(
+    (given) => (expected) => equal(given, expected)
+  )(
+    end
+  )(
+    ({length}) => (size) => {
+      equal(length, size)
 
-  end()
+      end()
+    }
+  )(
+    fresh(xstream.of("a"))
+  )
 })
 
-test(({throws, end}) => {
-  throws(
-    () => fresh(0)
+test("MemoryStream", ({equal, end}) => {
+  streamSatisfies(
+    []
+  )(
+    (given) => (expected) => equal(given, expected)
+  )(
+    end
+  )(
+    ({length}) => (size) => {
+      equal(length, size)
+
+      end()
+    }
+  )(
+    fresh(xstream.of("x").startWith("a"))
   )
+})
+
+
+test(({throws, end}) => {
+  throws(() => fresh(0), new Error("fresh doesn't know how to handle Number"))
 
   end()
 })

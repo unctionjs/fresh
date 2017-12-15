@@ -19,10 +19,10 @@ export default function fresh (value: mixed): mixed {
       return new Set()
     }
     case "Stream": {
-      return xstream.never()
+      return xstream.empty()
     }
     case "MemoryStream": {
-      return xstream.never().remember()
+      return xstream.empty().remember()
     }
     default: {
       throw new Error(`fresh doesn't know how to handle ${type(value)}`)
