@@ -1,20 +1,12 @@
 /* eslint-disable flowtype/require-parameter-type, flowtype/require-return-type, no-magic-numbers */
 import {test} from "tap"
-import xstream from "xstream"
+import {of} from "most"
+import {empty} from "most"
 import streamSatisfies from "@unction/streamsatisfies"
 
 import fresh from "./index"
 
-test(({same, end}) => {
-  same(
-    fresh({aaa: "aaa"}),
-    {}
-  )
-
-  end()
-})
-
-test(({same, end}) => {
+test("Array (filled)", ({same, end}) => {
   same(
     fresh(["a"]),
     []
@@ -23,43 +15,16 @@ test(({same, end}) => {
   end()
 })
 
-test(({equal, end}) => {
-  equal(
-    fresh("a"),
-    ""
-  )
-
-  end()
-})
-
-test(({same, end}) => {
+test("Object (filled)", ({same, end}) => {
   same(
-    fresh({}),
+    fresh({aaa: "aaa"}),
     {}
   )
 
   end()
 })
 
-test(({same, end}) => {
-  same(
-    fresh([]),
-    []
-  )
-
-  end()
-})
-
-test(({equal, end}) => {
-  equal(
-    fresh(""),
-    ""
-  )
-
-  end()
-})
-
-test(({same, end}) => {
+test("Set (filled)", ({same, end}) => {
   same(
     fresh(new Set([1, 2, 3])),
     new Set()
@@ -68,7 +33,7 @@ test(({same, end}) => {
   end()
 })
 
-test(({same, end}) => {
+test("Map (filled)", ({same, end}) => {
   same(
     fresh(new Map([["a", "b"]])),
     new Map()
@@ -77,39 +42,91 @@ test(({same, end}) => {
   end()
 })
 
-test("Stream", ({equal, end}) => {
+test("String (filled)", ({equal, end}) => {
+  equal(
+    fresh("a"),
+    ""
+  )
+
+  end()
+})
+
+test("Array (empty)", ({same, end}) => {
+  same(
+    fresh([]),
+    []
+  )
+
+  end()
+})
+
+test("Object (empty)", ({same, end}) => {
+  same(
+    fresh({}),
+    {}
+  )
+
+  end()
+})
+
+test("Set (empty)", ({same, end}) => {
+  same(
+    fresh(new Set()),
+    new Set()
+  )
+
+  end()
+})
+
+test("Map (empty)", ({same, end}) => {
+  same(
+    fresh(new Map()),
+    new Map()
+  )
+
+  end()
+})
+
+test("String (empty)", ({equal, end}) => {
+  equal(
+    fresh(""),
+    ""
+  )
+
+  end()
+})
+
+test("Stream (filled)", ({equal, doesNotThrow, end}) => {
   streamSatisfies(
     []
   )(
     (given) => (expected) => equal(given, expected)
   )(
-    end
+    doesNotThrow
   )(
     ({length}) => (size) => {
       equal(length, size)
-
       end()
     }
   )(
-    fresh(xstream.of("a"))
+    fresh(of("a"))
   )
 })
 
-test("MemoryStream", ({equal, end}) => {
+test("Stream (empty)", ({equal, doesNotThrow, end}) => {
   streamSatisfies(
     []
   )(
     (given) => (expected) => equal(given, expected)
   )(
-    end
+    doesNotThrow
   )(
     ({length}) => (size) => {
       equal(length, size)
-
       end()
     }
   )(
-    fresh(xstream.of("x").startWith("a"))
+    fresh(empty())
   )
 })
 

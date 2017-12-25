@@ -1,5 +1,5 @@
 import type from "@unction/type"
-import xstream from "xstream"
+import {empty} from "most"
 
 export default function fresh (value: mixed): mixed {
   switch (type(value)) {
@@ -19,10 +19,7 @@ export default function fresh (value: mixed): mixed {
       return new Set()
     }
     case "Stream": {
-      return xstream.empty()
-    }
-    case "MemoryStream": {
-      return xstream.empty().remember()
+      return empty()
     }
     default: {
       throw new Error(`fresh doesn't know how to handle ${type(value)}`)
