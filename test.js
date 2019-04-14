@@ -1,100 +1,100 @@
 /* eslint-disable no-magic-numbers */
-import {test} from "tap"
-import {of} from "most"
-import {empty} from "most"
-import streamSatisfies from "@unction/streamsatisfies"
+import {test} from "tap";
+import {of} from "most";
+import {empty} from "most";
+import streamSatisfies from "@unction/streamsatisfies";
 
-import fresh from "./index"
+import fresh from "./index";
 
 test("Array (filled)", ({same, end}) => {
   same(
     fresh(["a"]),
     []
-  )
+  );
 
-  end()
-})
+  end();
+});
 
 test("Object (filled)", ({same, end}) => {
   same(
     fresh({aaa: "aaa"}),
     {}
-  )
+  );
 
-  end()
-})
+  end();
+});
 
 test("Set (filled)", ({same, end}) => {
   same(
     fresh(new Set([1, 2, 3])),
     new Set()
-  )
+  );
 
-  end()
-})
+  end();
+});
 
 test("Map (filled)", ({same, end}) => {
   same(
     fresh(new Map([["a", "b"]])),
     new Map()
-  )
+  );
 
-  end()
-})
+  end();
+});
 
 test("String (filled)", ({equal, end}) => {
   equal(
     fresh("a"),
     ""
-  )
+  );
 
-  end()
-})
+  end();
+});
 
 test("Array (empty)", ({same, end}) => {
   same(
     fresh([]),
     []
-  )
+  );
 
-  end()
-})
+  end();
+});
 
 test("Object (empty)", ({same, end}) => {
   same(
     fresh({}),
     {}
-  )
+  );
 
-  end()
-})
+  end();
+});
 
 test("Set (empty)", ({same, end}) => {
   same(
     fresh(new Set()),
     new Set()
-  )
+  );
 
-  end()
-})
+  end();
+});
 
 test("Map (empty)", ({same, end}) => {
   same(
     fresh(new Map()),
     new Map()
-  )
+  );
 
-  end()
-})
+  end();
+});
 
 test("String (empty)", ({equal, end}) => {
   equal(
     fresh(""),
     ""
-  )
+  );
 
-  end()
-})
+  end();
+});
 
 test("Stream (filled)", ({equal, doesNotThrow, end}) => {
   streamSatisfies(
@@ -105,13 +105,13 @@ test("Stream (filled)", ({equal, doesNotThrow, end}) => {
     doesNotThrow
   )(
     ({length}) => (size) => {
-      equal(length, size)
-      end()
+      equal(length, size);
+      end();
     }
   )(
     fresh(of("a"))
-  )
-})
+  );
+});
 
 test("Stream (empty)", ({equal, doesNotThrow, end}) => {
   streamSatisfies(
@@ -122,17 +122,17 @@ test("Stream (empty)", ({equal, doesNotThrow, end}) => {
     doesNotThrow
   )(
     ({length}) => (size) => {
-      equal(length, size)
-      end()
+      equal(length, size);
+      end();
     }
   )(
     fresh(empty())
-  )
-})
+  );
+});
 
 
 test(({throws, end}) => {
-  throws(() => fresh(0), new Error("fresh doesn't know how to handle Number"))
+  throws(() => fresh(0), new Error("fresh doesn't know how to handle Number"));
 
-  end()
-})
+  end();
+});

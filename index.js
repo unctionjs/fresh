@@ -1,40 +1,40 @@
 import type from "@unction/type";
-import { empty } from "most";
-export default function fresh(value) {
+import {empty} from "most";
+export default function fresh (value) {
   switch (type(value)) {
     case "String":
-      {
-        return "";
-      }
+    {
+      return "";
+    }
 
     case "Array":
-      {
-        return [];
-      }
+    {
+      return [];
+    }
 
     case "Object":
-      {
-        return {};
-      }
+    {
+      return {};
+    }
 
     case "Map":
-      {
-        return new Map();
-      }
+    {
+      return new Map();
+    }
 
     case "Set":
-      {
-        return new Set();
-      }
+    {
+      return new Set();
+    }
 
     case "Stream":
-      {
-        return empty();
-      }
+    {
+      return empty();
+    }
 
     default:
-      {
-        throw new Error(`fresh doesn't know how to handle ${type(value)}`);
-      }
+    {
+      throw new Error(`fresh doesn't know how to handle ${type(value)}`);
+    }
   }
 }
