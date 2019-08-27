@@ -4,7 +4,7 @@ import {of} from "most";
 import {empty} from "most";
 import streamSatisfies from "@unction/streamsatisfies";
 
-import fresh from "./index";
+import fresh from "./";
 
 test("Array (filled)", ({same, end}) => {
   same(
