@@ -4,7 +4,7 @@
 ![Stability][BADGE_STABILITY]
 ![Dependencies][BADGE_DEPENDENCY]
 
-> mixed => mixed
+> A => A
 
 Takes a value and returns an empty fresh version of that value.
 
