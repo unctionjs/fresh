@@ -1,6 +1,6 @@
 {
   "name": "@unction/fresh",
-  "version": "8.6.0",
+  "version": "8.7.0",
   "description": "Takes a iterable and returns an empty fresh version of that iterable",
   "keywords": [
     "unction",
