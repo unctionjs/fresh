@@ -3,7 +3,7 @@ import { of } from "most";
 import {empty} from "most";
 import streamSatisfies from "@unction/streamsatisfies";
 
-import fresh from "./index.ts";
+import fresh from "./index";
 
 test("Array (filled)", () => {
   expect(fresh(["a"])).toEqual([]);
