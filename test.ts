@@ -80,6 +80,6 @@ test("Stream (empty)", done => {
 });
 
 
-test(() => {
+test("works", () => {
   expect(() => fresh(0)).toThrowError(new Error("fresh doesn't know how to handle Number"));
 });
